@@ -1,0 +1,4 @@
+#grep all the G in hg38.fa file
+grep -o 'G' hg38.fa | wc -l  
+#grep all the line that contains G in hg38.fa file
+grep 'G' hg38.fa | wc -l
