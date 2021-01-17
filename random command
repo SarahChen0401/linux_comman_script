@@ -1,4 +1,17 @@
-#grep all the G in hg38.fa file
+1.
+#https://blog.csdn.net/lei_qi/article/details/108082926
+#find all the G character in hg38.fa file
 grep -o 'G' hg38.fa | wc -l  
-#grep all the line that contains G in hg38.fa file
+#find all the line that contains G in hg38.fa file
 grep 'G' hg38.fa | wc -l
+
+#https://www.biostars.org/p/227533/
+#find all the CG dinuleocite in whole genome incluidng "CG" and "C\nG"  
+grep -v "^>" hg38.fa (exclude beginning with ">" lines) 
+| tr -d "\n" (delete all "\n")
+| tr -c "[GCgc]" "\n" (replace all complementary characters of "GCgc" which is "ATat" with "\n" )
+| grep -v '^$' (exclude ending with "$" which is "\n")
+| grep -o -i 'CG' (find "CG",ignore the upper or lower cases of "CG" )
+| wc -l (count the occurance of "CG")
+
+2.
