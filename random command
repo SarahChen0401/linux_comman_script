@@ -15,3 +15,5 @@ grep -v "^>" hg38.fa (exclude beginning with ">" lines)
 | wc -l (count the occurance of "CG")
 
 2.
+#calculate the character occurence of second column 
+cut  -f2 <base.txt | sort | uniq -c | awk -vOFS=, '{ print $2, $1 }'
