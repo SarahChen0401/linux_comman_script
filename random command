@@ -15,5 +15,16 @@ grep -v "^>" hg38.fa (exclude beginning with ">" lines)
 | wc -l (count the occurance of "CG")
 
 2.
+#if the folder exist, then cd. if not,then make dir, then cd.  
+mkdir -p /data/chenshuhua/1000Genome/HG01109 
+cd /data/chenshuhua/1000Genome/HG01109
+wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/hd_genotype_chip/ALL.chip.omni_broad_sanger_combined.20140818.snps.genotypes.vcf.gz.tbi
+
+3.
+#https://bioinformatics.stackexchange.com/questions/3477/how-to-subset-samples-from-a-vcf-file
+#extract HG03492 sample out of vcf file.
+bcftools view -s HG03492 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_no_ped.vcf > HG03492.vcf
+
+4.
 #calculate the character occurence of second column 
 cut  -f2 <base.txt | sort | uniq -c | awk -vOFS=, '{ print $2, $1 }'
